@@ -21,7 +21,7 @@ def add_piece(id, name, category, price, status, description):
 
 def list_pieces(catalog):
     if not isinstance(catalog, list):
-        raise ValueError("El catálogo debe ser una lista")
+        raise ValueError("El catálogo debe ser una lista.")
 
     names = []
     for piece in catalog:
@@ -31,11 +31,25 @@ def list_pieces(catalog):
 
 def find_piece_by_id(catalog, id):
     if not isinstance(catalog, list):
-        raise ValueError("El catálogo debe ser una lista")
+        raise ValueError("El catálogo debe ser una lista.")
 
     for piece in catalog:
         if piece['id'] == id:
             return piece
 
     return None
+
+def remove_piece(catalog, id):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista.")
+
+    try:
+        piece = find_piece_by_id(catalog, id)
+        if piece is None:
+            raise ValueError("No se encontró ninguna pieza con ese id.")
+        catalog.remove(piece)
+        return True
+    except ValueError:
+        return False
+
 
