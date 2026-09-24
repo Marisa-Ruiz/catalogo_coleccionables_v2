@@ -99,4 +99,20 @@ def filter_by_status(catalog, status):
 
     return matching_pieces
 
+def filter_by_min_price(catalog, min_price):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista.")
+
+    try:
+        min_price = float(min_price)
+    except ValueError:
+        raise ValueError("El precio debe ser un número.")
+
+    matching_pieces = []
+    for piece in catalog:
+        if piece['price'] > min_price:
+            matching_pieces.append(piece)
+
+    return matching_pieces
+
 
