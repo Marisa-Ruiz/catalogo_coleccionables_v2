@@ -28,3 +28,14 @@ def list_pieces(catalog):
         names.append(piece['name'])
 
     return names
+
+def find_piece_by_id(catalog, id):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+
+    for piece in catalog:
+        if piece['id'] == id:
+            return piece
+
+    return None
+
