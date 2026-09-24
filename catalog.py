@@ -78,3 +78,13 @@ def get_pieces_by_category(catalog, category):
 
     return matching_names
 
+def piece_exists(catalog, id):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista.")
+    piece = find_piece_by_id(catalog, id)
+    if piece is None:
+        return False
+    else:
+        return True
+
+
