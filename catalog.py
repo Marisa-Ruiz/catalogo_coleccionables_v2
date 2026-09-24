@@ -66,3 +66,15 @@ def get_catalog_summary(catalog):
             summary[category] = 1
 
     return summary
+
+def get_pieces_by_category(catalog, category):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista.")
+
+    matching_names = []
+    for piece in catalog:
+        if piece['category'] == category:
+            matching_names.append(piece['name'])
+
+    return matching_names
+
