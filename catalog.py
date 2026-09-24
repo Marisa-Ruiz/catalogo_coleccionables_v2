@@ -52,4 +52,17 @@ def remove_piece(catalog, id):
     except ValueError:
         return False
 
+def get_catalog_summary(catalog):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista.")
 
+    summary = {}
+
+    for piece in catalog:
+        category = piece['category']
+        if category in summary:
+            summary[category] = summary[category] + 1
+        else:
+            summary[category] = 1
+
+    return summary
