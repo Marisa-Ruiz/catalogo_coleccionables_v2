@@ -17,22 +17,45 @@ while running:
     print("6. Eliminar una pieza")
     print("7. Salir")
 
-option = input("Elige una opción (1-7): ")
+    option = input("Elige una opción (1-7): ")
 
-if option == "1":
-    pass
-elif option == "2":
-    pass
-elif option == "3":
-    pass
-elif option == "4":
-    pass
-elif option == "5":
-    pass
-elif option == "6":
-    pass
-elif option == "7":
-    print("\n¡Gracias por usar el sistema de catálogo! Hasta pronto.")
-    running = False
-else:
-    print("\nOpción no válida. Introduce un número entre 1 y 7.")
+    if option == "1":
+        item_id = input("Introduce el ID de la pieza: ")
+        name = input("Introduce tu nombre de la pieza: ")
+        category = input("Introduce la categoría de la pieza: ")
+        price = input("Introduce la precio de la pieza: ")
+        status = input("Introduce la status a la pieza (disponible/resevada/vendida): ")
+        description = input("Introduce la descripción de la pieza (debe incluir 'usada' o 'certificada'): ")
+
+        try:
+            new_piece = add_piece(item_id, name, category, price, status, description)
+            catalog.append(new_piece)
+            print("\nPieza registrada correctamente.")
+        except ValueError as e:
+            print(f"\nError al registrar la pieza: {e}")
+
+    elif option == "2":
+        if len(catalog) == 0:
+            print("\nEl catálogo está vacío.")
+        else:
+            for piece in catalog:
+                print(f"\nID: {piece['id']}")
+                print(f"Nombre: {piece['name']}")
+                print(f"Categoria: {piece['category']}")
+                print(f"Precio: {piece['price']}")
+                print(f"Estado: {piece['status']}")
+                print(f"Descripción: {piece['description']}")
+
+    elif option == "3":
+        pass
+    elif option == "4":
+        pass
+    elif option == "5":
+        pass
+    elif option == "6":
+        pass
+    elif option == "7":
+        print("\n¡Gracias por usar el sistema de catálogo! Hasta pronto.")
+        running = False
+    else:
+        print("\nOpción no válida. Introduce un número entre 1 y 7.")
