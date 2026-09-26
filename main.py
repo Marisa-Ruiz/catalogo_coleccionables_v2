@@ -63,9 +63,26 @@ while running:
         print(f"\nEL precio promedio del catálogo es: {average: .2f}")
 
     elif option == "5":
-        pass
+        search_id = input("Introduce el ID de la pieza a buscar: ")
+        piece = find_piece_by_id(catalog, search_id)
+        if piece is None:
+            print("\nNo se encontró ninguna pieza con ese id.")
+        else:
+            print(f"ID: {piece['id']}")
+            print(f"Nombre: {piece['name']}")
+            print(f"Categoria: {piece['category']}")
+            print(f"Precio: {piece['price']}")
+            print(f"Estado: {piece['status']}")
+            print(f"Descripcion: {piece['description']}")
+
     elif option == "6":
-        pass
+        delete_id = input("Introduce el ID de la pieza a eliminar:")
+        removed = remove_piece(catalog, delete_id)
+        if removed:
+            print("\nPieza eliminada correctamente.")
+        else:
+            print("\nNo  se encontró ninguna pieza con ese id.")
+
     elif option == "7":
         print("\n¡Gracias por usar el sistema de catálogo! Hasta pronto.")
         running = False
