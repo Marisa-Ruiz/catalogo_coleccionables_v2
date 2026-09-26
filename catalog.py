@@ -1,16 +1,19 @@
 from validations import validate_not_empty, validate_price, validate_status, validate_description
 
-def add_piece(id, name, category, price, status, description):
-    validate_not_empty(id, "id")
+def add_piece(piece_id, name, category, price, status, description):
+    validate_not_empty(piece_id, "id")
     validate_not_empty(name, "name")
     validate_not_empty(category, "category")
+    price = price.replace(",", ".")
+    validate_not_empty(price, "price")
     validate_price(price)
     price = float(price)
     validate_status(status)
+    status = status.lower()
     validate_description(description)
 
     piece = {
-        "id": id,
+        "id": piece_id,
         "name": name,
         "category": category,
         "price": price,
@@ -30,22 +33,22 @@ def list_pieces(catalog):
 
     return names
 
-def find_piece_by_id(catalog, id):
+def find_piece_by_id(catalog, id_piece):
     if not isinstance(catalog, list):
         raise ValueError("El catálogo debe ser una lista.")
 
     for piece in catalog:
-        if piece['id'] == id:
+        if piece['id'] == id_piece:
             return piece
 
     return None
 
-def remove_piece(catalog, id):
+def remove_piece(catalog, id_piece):
     if not isinstance(catalog, list):
         raise ValueError("El catálogo debe ser una lista.")
 
     try:
-        piece = find_piece_by_id(catalog, id)
+        piece = find_piece_by_id(catalog, id_piece)
         if piece is None:
             raise ValueError("No se encontró ninguna pieza con ese id.")
         catalog.remove(piece)
@@ -79,10 +82,10 @@ def get_pieces_by_category(catalog, category):
 
     return matching_names
 
-def piece_exists(catalog, id):
+def piece_exists(catalog, id_piece):
     if not isinstance(catalog, list):
         raise ValueError("El catálogo debe ser una lista.")
-    piece = find_piece_by_id(catalog, id)
+    piece = find_piece_by_id(catalog, id_piece)
     if piece is None:
         return False
     else:
@@ -104,6 +107,7 @@ def filter_by_min_price(catalog, min_price):
     if not isinstance(catalog, list):
         raise ValueError("El catálogo debe ser una lista.")
 
+    min_price = min_price.replace(",", ".")
     try:
         min_price = float(min_price)
     except ValueError:
