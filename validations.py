@@ -11,10 +11,12 @@ def validate_price(price):
         raise ValueError("El precio debe ser mayor que 0.")
 
 def validate_status(status):
-    if status not in ["disponible", "reservada", "vendida"]:
+    normalized = status.lower()
+    valid_statuses = status.lower()
+    if normalized not in valid_statuses:
         raise ValueError("El estado debe ser disponible, reservada o vendida.")
 
-
 def validate_description(description):
-    if not ("usada" in description or "certificada" in description):
+    lowered = description.lower()
+    if not ("usad" in lowered or "certificad" in lowered):
         raise ValueError("La descripción debe incluir 'usada' o 'certificada'.")
