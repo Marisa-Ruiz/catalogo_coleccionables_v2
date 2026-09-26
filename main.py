@@ -47,9 +47,21 @@ while running:
                 print(f"Descripción: {piece['description']}")
 
     elif option == "3":
-        pass
+        available_pieces = filter_by_status(catalog, "disponible")
+        if len(available_pieces) == 0:
+            print("\nNo hay piezas disponibles.")
+        else:
+            for piece in available_pieces:
+                print(f"ID: {piece['id']}")
+                print(f"Nombre: {piece['name']}")
+                print(f"Categoria: {piece['category']}")
+                print(f"Precio: {piece['price']}")
+                print(f"Estado: {piece['status']}")
+                print(f"Descripcion: {piece['description']}")
     elif option == "4":
-        pass
+        average = get_average_price(catalog)
+        print(f"\nEL precio promedio del catálogo es: {average: .2f}")
+
     elif option == "5":
         pass
     elif option == "6":
