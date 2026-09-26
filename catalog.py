@@ -5,6 +5,7 @@ def add_piece(id, name, category, price, status, description):
     validate_not_empty(name, "name")
     validate_not_empty(category, "category")
     validate_price(price)
+    price = float(price)
     validate_status(status)
     validate_description(description)
 
