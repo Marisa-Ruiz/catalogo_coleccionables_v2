@@ -37,7 +37,7 @@ descripción que debe indicar si la pieza está usada o certificada.
 
 ## Ejemplo de interacción
 
-
+<img width="1582" height="607" alt="Captura de pantalla 2026-09-26 152551" src="https://github.com/user-attachments/assets/65e4c470-d0d3-4a90-8ca8-0afdef92e4cd" />
 
 ## Tecnologías utilizadas
 
